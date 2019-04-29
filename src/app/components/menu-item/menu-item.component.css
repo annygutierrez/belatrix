@@ -1,0 +1,12 @@
+.containerItem {
+    width: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+}
+
+.item {
+    color: lightgray;
+    margin: 10px;
+}
