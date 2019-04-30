@@ -1,4 +1,12 @@
 .containerMenu {
     display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.containerHeader {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     align-items: center;
 }
