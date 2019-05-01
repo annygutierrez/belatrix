@@ -1,7 +1,9 @@
 .containerMenu {
     display: flex;
     flex: 1;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .containerHeader {
@@ -9,4 +11,6 @@
     flex: 1;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }

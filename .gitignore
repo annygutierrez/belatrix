@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 
 token.txt
+package-lock.json

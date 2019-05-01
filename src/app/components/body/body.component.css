@@ -1,0 +1,54 @@
+input {
+    text-align: center;
+    border: none;
+}
+
+select {
+    border: none;
+}
+
+.containerBody {
+    display: flex;
+    flex: 1;
+    background-color: lightgray;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 300px;
+    margin-bottom: 40px;
+}
+
+.groupInputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 30px;
+    width: 220px;
+    margin-bottom: 10px;
+}
+
+.containerInputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculateButton {
+    background-color: #adadad;
+    height: 40px;
+    width: 160px;
+    color: white;
+    font-size: 14px;
+}
+
+.containerButton {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

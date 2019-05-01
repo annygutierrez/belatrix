@@ -1,0 +1,13 @@
+.containerHome {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.appHeader {
+    flex: 1;
+}
+
+.appBody {
+    flex: 1;
+}
