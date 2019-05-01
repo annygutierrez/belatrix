@@ -6,3 +6,5 @@ export const CURRENCY = [
         ISO: 'EUR'
     }
 ];
+
+export const HOST = 'https://frankfurter.app/latest';

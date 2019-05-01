@@ -11,3 +11,7 @@
 .appBody {
     flex: 1;
 }
+
+.appFooter {
+    flex: 1
+}

@@ -3,19 +3,19 @@
     <div class="containerInputs">
       <div class="groupInputs">
         <input type="number" formControlName="inputToConvert">
-        <select formControlName="currencyToConvert">
+        <select (change)="calculateExchange()" formControlName="currencyToConvert">
           <option *ngFor="let item of currency" [value]="item.ISO">{{ item.ISO }}</option>
         </select>
       </div>
       <div class="groupInputs">
           <input type="number" formControlName="inputConverted">
-          <select formControlName="currencyConverted">
+          <select (change)="calculateExchange()" formControlName="currencyConverted">
             <option *ngFor="let item of currency" [value]="item.ISO">{{ item.ISO }}</option>
           </select>
       </div>
     </div>
     <div class="containerButton">
-      <input class="calculateButton" type="button" value="CALCULATE">
+      <input (click)="calculateExchange()" class="calculateButton" type="button" value="CALCULATE">
     </div>
   </form>
 </div>

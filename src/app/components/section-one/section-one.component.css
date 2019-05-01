@@ -1,0 +1,20 @@
+.titleSection {
+    background-color: gray;
+    width: 50px;
+    height: 20px;
+    margin-bottom: 15px;
+}
+
+.textSection {
+    background-color: #b3b1b1;
+    width: 128px;
+    height: 15px;
+    margin-bottom: 10px;
+}
+
+.textSection2 {
+    background-color: #b3b1b1;
+    width: 120px;
+    height: 15px;
+    margin-bottom: 10px;
+}
