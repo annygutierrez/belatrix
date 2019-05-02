@@ -1,3 +1,12 @@
 export const environment = {
-  production: true
+  production: true,
+  HOST: 'https://frankfurter.app/latest',
+  CURRENCY: [
+    {
+        ISO: 'USD'
+    },
+    {
+        ISO: 'EUR'
+    }
+  ]
 };

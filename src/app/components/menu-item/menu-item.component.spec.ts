@@ -16,6 +16,7 @@ describe('MenuItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MenuItemComponent);
     component = fixture.componentInstance;
+    component.item = { name: 'test', id: 4 };
     fixture.detectChanges();
   });
 

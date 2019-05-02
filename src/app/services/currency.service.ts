@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HOST, ACCESS_KEY } from '../utils/constants';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class CurrencyService {
   constructor(private http: HttpClient) { }
 
   getConversion(base, symbols): Observable<any> {
-    return this.http.get(`${HOST}?from=${base}&to=${symbols}`);
+    const params = { from: base, to: symbols };
+    return this.http.get(environment.HOST, { params });
   }
 }

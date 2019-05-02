@@ -2,7 +2,7 @@
   <form [formGroup]="formExchange">
     <div class="containerInputs">
       <div class="groupInputs">
-        <input type="number" formControlName="inputToConvert">
+        <input #inputToConvert (keyup)="validateLengthDecimals(inputToConvert.value)" type="number" formControlName="inputToConvert">
         <select (change)="calculateExchange()" formControlName="currencyToConvert">
           <option *ngFor="let item of currency" [value]="item.ISO">{{ item.ISO }}</option>
         </select>

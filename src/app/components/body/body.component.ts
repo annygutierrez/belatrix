@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { interval } from 'rxjs/internal/observable/interval';
 import { startWith, switchMap } from 'rxjs/operators';
-import { CURRENCY } from '../../utils/constants';
+import { environment } from 'src/environments/environment';
 import { CurrencyService } from '../../services/currency.service';
 
 @Component({
@@ -13,17 +13,17 @@ import { CurrencyService } from '../../services/currency.service';
 })
 export class BodyComponent implements OnInit {
 
-  private currency = CURRENCY;
-  private formExchange = new FormGroup({
-    inputToConvert: new FormControl(null, Validators.required),
-    inputConverted: new FormControl({ value: null, disabled: true }),
-    currencyToConvert: new FormControl('USD'),
-    currencyConverted: new FormControl('EUR')
+  private currency = environment.CURRENCY;
+  private formExchange = this.fb.group({
+    inputToConvert: [null, [Validators.required]],
+    inputConverted: [null, { disabled: true }],
+    currencyToConvert: ['USD'],
+    currencyConverted: ['EUR']
   });
   private subscription: Subscription;
   private rate;
-
-  constructor(private currencyService: CurrencyService) {}
+  
+  constructor(private currencyService: CurrencyService, private fb: FormBuilder) {}
 
   async calculateExchange() {
     const { inputToConvert, currencyToConvert, currencyConverted } = this.formExchange.value;
@@ -33,7 +33,17 @@ export class BodyComponent implements OnInit {
       this.rate = responseGetConversion.rates[currencyConverted];
     }
     let _inputConverted = inputToConvert ? (currencyToConvert === currencyConverted ? inputToConvert : inputToConvert * this.rate) : null;
-    this.formExchange.patchValue({ inputConverted: _inputConverted });
+    this.formExchange.patchValue({ inputConverted: this.formatValueInput(_inputConverted) });
+  }
+
+  formatValueInput(value: Number) {
+    const decimal=  /^[-+]?[0-9]+\.[0-9]+$/;
+    const valueFormatted = (decimal.test(String(value)) && value.toString().split('.')[1].length > 4) ? Number(value).toFixed(4) : value;
+    return valueFormatted;
+  }
+
+  validateLengthDecimals(value) {
+    this.formExchange.patchValue({ inputToConvert: this.formatValueInput(value) });
   }
 
   ngOnInit() {
@@ -44,7 +54,6 @@ export class BodyComponent implements OnInit {
       switchMap(() => this.currencyService.getConversion(currencyToConvert, currencyConverted))
     )
     .subscribe(response => {
-      console.log(response)
       const { currencyConverted } = this.formExchange.value;
       this.rate = response.rates[currencyConverted];
     });
